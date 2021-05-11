@@ -1,7 +1,7 @@
 CREATE TABLE favourite_recipe
 (
   id INT NOT NULL AUTO_INCREMENT,
-  spoonacular_api_id longtext NOT NULL,
+  spoonacular_api_id INT NOT NULL,
   user_id INT NOT NULL,
   CONSTRAINT pk_favourite_recipe PRIMARY KEY (id)
 );
