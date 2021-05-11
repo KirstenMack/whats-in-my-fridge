@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv').config({path: './appconfig.env'});
-const mysql = require('./src/db/connection');
+const mysql = require('./db/connection');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -40,8 +40,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen('3000', () => {
-	console.log('Sever listening on port 3000');
+app.listen('3001', () => {
+	console.log('Sever listening on port 3001');
 });
 
 module.exports = app;
