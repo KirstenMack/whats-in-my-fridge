@@ -1,0 +1,42 @@
+CREATE TABLE favourite_recipe
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  spoonacular_api_id INT NOT NULL,
+  user_id INT NOT NULL,
+  CONSTRAINT pk_favourite_recipe PRIMARY KEY (id)
+);
+
+CREATE TABLE ingredients
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  title varchar(255),
+  description varchar(500),
+  units varchar(50),
+  CONSTRAINT pk_ingredients PRIMARY KEY (id)
+);
+
+CREATE TABLE user_ingredients
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  ingredient_id INT NOT NULL,
+  CONSTRAINT pk_user_ingredients PRIMARY KEY (id)
+);
+
+CREATE TABLE users
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  first_name varchar(255),
+  last_name varchar(255),
+  email varchar(255),
+  CONSTRAINT pk_users PRIMARY KEY (id)
+);
+
+ALTER TABLE favourite_recipe ADD CONSTRAINT fk_user_id
+  FOREIGN KEY (user_id) REFERENCES users (id);
+
+ALTER TABLE user_ingredients ADD CONSTRAINT fk_ui_ingredients_id
+  FOREIGN KEY (ingredient_id) REFERENCES ingredients (id);
+
+ALTER TABLE user_ingredients ADD CONSTRAINT fk_ui_user_id
+  FOREIGN KEY (user_id) REFERENCES users (id);
