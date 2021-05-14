@@ -6,7 +6,7 @@ const spoonacular = require('../api/spoonacular')
 /* GET home page. */
 router.get('/', function(req, res, next) {
         res.render('index', {
-            title: 'Express'});
+            title: 'Whats in my fridge?'});
 });
 
 module.exports = router;
