@@ -1,10 +1,14 @@
 class Users {
-  constructor(id, firstName, lastName, email) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
+  constructor(result) {
+    this.id = result[0].id;
+    this.firstName = result[0].first_name;
+    this.lastName =  result[0].last_name;
+    this.email = result[0].email;
   }
-}
 
-module.exports = Users;
+};
+
+
+module.exports = {
+  Users
+};

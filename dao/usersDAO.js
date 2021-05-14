@@ -1,51 +1,34 @@
-const { createConnection } = require("../db/connection");
-const Users = require("../models/users");
-var connection;
+const mysql = require("mysql");
+const { Users } = require("../models/users");
+const { dbConfig } = require("../db/connection");
+const connection = mysql.createConnection(dbConfig);
+connection.connect();
 
- function validateUser(name, email) {
-    try{
-        var user =  findUserByEmail(email);
-        var str = name.split(" ");
-        if (user === undefined) insertUser(str[0], str[1], email);
-        else return findUserByEmail(email);
-    }catch ( err) {
-        console.error(err);
-    }
- 
-}
 
-async function findUserByEmail(email) {
-  connection = createConnection();
+function findUserByEmail(email) {
   connection.query(
-    "SELECT email FROM users WHERE email = ?",
+    "SELECT * FROM users WHERE email = ?",
     [email],
     (err, res) => {
       if (err) console.log(err);
-      if (res.length > 0)
-        return new Users(
-          res[0].id,
-          res[0].first_name,
-          res[0].last_name,
-          res[0].email
-        );
-      else return null;
+      if (res.length > 0) return new Users(res);
     }
   );
 }
 
-function insertUser(firstName, lastName, email) {
-  connection = createConnection();
+function insertUser(name, email) {
+  var split = name.split(" ");
   connection.query(
     "INSERT INTO users SET ? ",
-    { frist_name: firstName, last_name: lastName, email: email },
+    { first_name: split[0], last_name: split[1], email: email },
     (err, res) => {
       if (err) console.log(err);
+      else return findUserByEmail(email);
     }
   );
 }
 
 module.exports = {
-  validateUser,
-  findUserByEmail,
-  insertUser,
+    findUserByEmail,
+    insertUser,
 };
