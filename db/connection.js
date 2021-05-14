@@ -28,7 +28,14 @@ function handleDisconnect() {
   });
 }
 
+function createConnection(dbconfig){
+  return mysql.createConnection(dbConfig);
+}
+
 handleDisconnect();
 
-module.exports = connection;
+module.exports = {
+  handleDisconnect,
+  createConnection,
+};
 

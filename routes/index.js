@@ -9,4 +9,9 @@ router.get('/', function(req, res, next) {
             title: 'Whats in my fridge?'});
 });
 
+router.get('/login', (req, res) => {
+    res.render("login")
+});
+
+
 module.exports = router;
