@@ -58,12 +58,12 @@
     <div class="w3-container w3-padding-64" id="search">
         <h1>Search for a Recipe</h1><br>
         <div class="w3-col l6 w3-padding-large">
-            <p>Here is a recipe returned by Spoonacular with the word "cheescake" in it: </p>
+            <p>Input absolutely any ingredient in your fridge and we'll return a recipe! </p>
             <p class="w3-text-blue-grey w3-large"><b>{{response}}</b></p>
             <h4>Input ingredients to find a recipe: </h4>
-            <form action="/action_page.php" target="_blank">
-                <p><input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required name="Ingredients"></p>
-                <p><button class="w3-button w3-light-grey w3-section" type="submit">SEARCH</button></p>
+            <form action="/search/search" method="post">
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required name="Ingredients" id="searchIngredients"></p>
+                <p><button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button></p>
             </form>
         </div>
 
@@ -108,4 +108,5 @@
 </footer>
 
 </body>
+<script src="javascripts/search.js"></script>
 </html>
