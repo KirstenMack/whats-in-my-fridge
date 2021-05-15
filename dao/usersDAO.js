@@ -1,34 +1,47 @@
-const mysql = require("mysql");
 const { Users } = require("../models/users");
-const { dbConfig } = require("../db/connection");
-const connection = mysql.createConnection(dbConfig);
-connection.connect();
+const connection = require("../db/connection");
+var instance = null;
 
+class UsersDAO {
 
-function findUserByEmail(email) {
-  connection.query(
-    "SELECT * FROM users WHERE email = ?",
-    [email],
-    (err, res) => {
-      if (err) console.log(err);
-      if (res.length > 0) return new Users(res);
+  static getInstance() {
+    return instance ? instance : new UsersDAO();
+  }
+
+  async findUserByEmail(email) {
+    try {
+      const response = await new Promise((resolve, reject) => {
+        const query = "SELECT * FROM users WHERE email = ?";
+        connection.query(query, [email], (err, result) => {
+          if (err) reject(new Error(err.message));
+          if (result.length > 0) resolve(new Users(result));
+          else resolve(undefined);
+        });
+
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
     }
-  );
+  }
+
+  async insertUser(name, email) {
+    try {
+      var split = name.split(" ");
+      const response = await new Promise((resolve, reject) => {
+        const query = "INSERT INTO users SET ? ";
+        connection.query( query, { first_name: split[0], last_name: split[1], email: email },
+          (err, result) => {
+            if (err) reject(new Error(err.message));
+            resolve(this.findUserByEmail(email));
+          }
+        );
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
-function insertUser(name, email) {
-  var split = name.split(" ");
-  connection.query(
-    "INSERT INTO users SET ? ",
-    { first_name: split[0], last_name: split[1], email: email },
-    (err, res) => {
-      if (err) console.log(err);
-      else return findUserByEmail(email);
-    }
-  );
-}
-
-module.exports = {
-    findUserByEmail,
-    insertUser,
-};
+module.exports = UsersDAO;
