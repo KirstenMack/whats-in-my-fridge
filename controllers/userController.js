@@ -1,4 +1,3 @@
-const cookieParser = require("cookie-parser");
 const google = require("../api/google");
 const UsersDAO = require("../dao/usersDAO");
 const dao = UsersDAO.getInstance();
@@ -9,8 +8,6 @@ exports.login = (req, res) => {
     .then(async () => {
       let user = await dao.findUserByEmail(email);
       if (user === undefined) user =  await dao.insertUser(name, email);
-      // res.session.user = user;
-      // res.session.authToken = token;
       res.cookie("auth-token", token);
       res.status(200).send("User authenticated!");
       res.send("index");

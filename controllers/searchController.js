@@ -4,8 +4,6 @@ const spoonacular = require('../api/spoonacular')
 
 exports.search = function(req, res) {
     try {
-        console.log(res.sesssion.user);
-        console.log(res.sesssion.authToken);
         const searchTerm = req.body.Ingredients;
         spoonacular.searchRequest(searchTerm)
             .then((response) => {
