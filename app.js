@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const dotenv = require('dotenv').config({path: './appconfig.env'});
 const mysql = require('./db/connection');
+const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -21,6 +22,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
+
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  secret: 'secret',
+  cookie: {
+    maxAge: null,
+  }
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

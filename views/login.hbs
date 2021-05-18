@@ -14,19 +14,13 @@
     <form>
         <section class="login">
             <img id="homeImage" src="images/logo.svg" alt="Inside a Fridge">
-            <div class="alert-success" id="success">User logged in!</div>
-            <div class="alert-danger" id="danger">Oops... something happened. Please try again!</div>
             <section class="login-card">
                 <h1>Login</h1>
-                <p>We'll be honest with you... Your data is important to us! That is why we have left the sign up
-                    process to
-                    the professionals.
-                </p>
+                <p>We'll be honest with you... Your data is important to us! That is why we have left the sign up process to the professionals.</p>
                 <div class="g-signin2" id="googleBtnSignin" data-onsuccess="onSignIn"></div>
-                {{!-- <button id="googleBtn" onclick="onSignIn();" class="google">Google</button>
-                <button id="facebookBtn" class="facebook">Facebook</button> --}}
+                
                 <button onclick="signOut();">Sign out</button>
-                <button onclick="signOut();">Back to recipes</button>
+                <button id="redirect" >Back to recipes</button>
             </section>
         </section>
     </form>
@@ -43,12 +37,25 @@
         xhr.onload = () => {
             console.log(xhr.responseText);
             if (xhr.status === 200) {
-               location.assign('/');
+                location.assign("/");
             }
         };
 
         xhr.send(JSON.stringify({ name: profile.getName(), email: profile.getEmail(), token: id_token }));
     }
+
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+
 
 </script>
 

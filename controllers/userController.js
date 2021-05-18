@@ -9,11 +9,9 @@ exports.login = (req, res) => {
     .then(async () => {
       let user = await dao.findUserByEmail(email);
       if (user === undefined) user = await dao.insertUser(name, email);
+      req.session.authID = user;
       res.cookie("auth-token", token);
-      res.status(200).send("User authenticated!");
-      // TODO: Create and use Session, will go up in next PR
-      //req.session.authID = await bcrypt.hash(user.id + "", 10);
-      console.log("Session Created: " + req.session.authID);
+      return res.status(200).redirect("/");
     })
     .catch(() => {
       console.error;
