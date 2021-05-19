@@ -5,7 +5,8 @@
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-signin-client_id"  content="7142003137-m0qds4ukao168265tm0iae3fjpl1f4er.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+        content="7142003137-m0qds4ukao168265tm0iae3fjpl1f4er.apps.googleusercontent.com">
     <link rel="stylesheet" href="stylesheets/login.css">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
@@ -14,19 +15,15 @@
     <form>
         <section class="login">
             <img id="homeImage" src="images/logo.svg" alt="Inside a Fridge">
-            <div class="alert-success" id="success">User logged in!</div>
-            <div class="alert-danger" id="danger">Oops... something happened. Please try again!</div>
+            <div class="alert-success" id="success">User Logged in!</div>
+            <div class="alert-danger" id="danger">Oops! something went wrong... Please contact support</div>
             <section class="login-card">
                 <h1>Login</h1>
                 <p>We'll be honest with you... Your data is important to us! That is why we have left the sign up
-                    process to
-                    the professionals.
-                </p>
-                <div class="g-signin2" id="googleBtnSignin" data-onsuccess="onSignIn"></div>
-                {{!-- <button id="googleBtn" onclick="onSignIn();" class="google">Google</button>
-                <button id="facebookBtn" class="facebook">Facebook</button> --}}
+                    process to the professionals.</p>
+                <div id="googleBtn" class="g-signin2" data-onsuccess="onSignIn"></div>
                 <button onclick="signOut();">Sign out</button>
-                <button onclick="signOut();">Back to recipes</button>
+                <a id="redirect" href="/">Back to recipes</a>
             </section>
         </section>
     </form>
@@ -41,14 +38,30 @@
         xhr.open('POST', '/users/login');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = () => {
-            console.log(xhr.responseText);
             if (xhr.status === 200) {
-               location.assign('/');
+                document.getElementById("success").style.display = "block";
+                setTimeout(function () { window.location.href = '/'; }, 3000);
             }
+
+            if (xhr.status === 401) {
+                console.log(xhr.responseText);
+                document.getElementById("danger").style.display = "block";
+                signOut();
+            }
+
         };
 
         xhr.send(JSON.stringify({ name: profile.getName(), email: profile.getEmail(), token: id_token }));
     }
+
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+    }
+
+
 
 </script>
 
