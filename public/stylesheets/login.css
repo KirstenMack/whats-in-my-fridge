@@ -1,0 +1,100 @@
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("../images/bg-login.jpg") no-repeat center center fixed;
+  background-size: cover;
+  margin: 0 auto;
+  width: 66%;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.login {
+  width: 30%;
+  min-width: 280px;
+  height: 55%;
+  min-height: 375px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+.login-card {
+  background: #fff;
+  color: black;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login p {
+  width: 100%;
+  margin: 20px 0px;
+  padding: 0;
+  text-align: justify;
+}
+
+.login a {
+  width: 100%;
+  margin: 20px 0px;
+}
+
+.login img {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.alert-success {
+  display: none;
+  border: 1 px solid #2f752f;
+  background: #a7eea7;
+  color: #2f752f;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 30px;
+}
+
+.alert-danger {
+  display: none;
+  border: 1 px solid #e41717;
+  background: #ff9090;
+  color: #e41717;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 30px;
+}
+
+.login Button {
+  width: 100%;
+  height: 50px;
+  display: block;
+  line-height: 34px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  outline: none;
+  margin: 20px 0px;
+}
+
+/* Facebook */
+.facebook {
+  background-color: #4c69ba;
+  margin: auto;
+  text-align: center;
+}
+
+/* Google */
+.google {
+  background: #dd4b39;
+  margin: auto;
+}
