@@ -3,28 +3,34 @@
 const spoonacular = require('../api/spoonacular')
 const axios = require("axios");
 
-exports.search = function(req, res) {
+exports.search = async function(req, res) {
     try {
+        var recipes = []
         const searchTerm = req.body.Ingredients;
-        spoonacular.searchRequest(searchTerm)
-            .then(response => {
-                    var recipes = []
-                    for( var i = 0; i < response.data.length; i++){
-                        var id = response.data[i].id;
-                        spoonacular.summaryRequest(id)
-                            .then( description => {
-                                console.log(description.data[0])
-                                // var recipe = {
-                                //     "id": id,
-                                //     "title": response.data[i].title,
-                                //     "image": response.data[i].image,
-                                //     "description": description
-                                // };
-                                // recipes.push(recipe);
-                            })
-                    }
-                    // return recipes
-                })
+        var response = await spoonacular.searchRequest(searchTerm).then( async function (response) {
+            for( var i = 0; i < response.data.length; i++){
+                var id = response.data[i].id;
+                var title = response.data[i].title;
+                var image = response.data[i].image;
+                var descripResponse = await spoonacular.summaryRequest(id);
+                var recipe = {
+                    "id": id,
+                    "title": title,
+                    "image": image,
+                    "description": descripResponse
+                };
+                recipes.push(recipe);
+            }
+        })
+            .then(function () {
+                console.log( recipes['description'])
+                res.render('index', {
+                    name: recipes['title'],
+                    image: recipes['image'],
+                    description: recipes['description']
+                });
+            })
+
             // .then((response) => {
             // if (response.length > 0) {
             //     const title = response[0].title;

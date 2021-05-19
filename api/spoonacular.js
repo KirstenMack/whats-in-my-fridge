@@ -8,6 +8,7 @@ const searchRequest = (searchText) => {
         const number = 1;
         return axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodedText}&number=${number}&apiKey=${apiKey}`)
     }
+
     catch(err){
         return  err;
     }
@@ -15,7 +16,7 @@ const searchRequest = (searchText) => {
 
 const summaryRequest = (id) => {
     try {
-        return axios.get(`https://api.spoonacular.com/recipes/?id=${id}/summary&apiKey=${apiKey}`);
+        return axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${apiKey}`);
     }catch (err){
         return err;
     }
