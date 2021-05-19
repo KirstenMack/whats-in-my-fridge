@@ -1,5 +1,5 @@
-const { Users } = require(`../models/users`);
-const connection = require(`../db/connection`);
+const { Users } = require("../models/users");
+const connection = require("../db/connection");
 var instance = null;
 
 class UsersDAO {
