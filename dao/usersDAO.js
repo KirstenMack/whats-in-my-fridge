@@ -1,5 +1,5 @@
-const { Users } = require("../models/users");
-const connection = require("../db/connection");
+const { Users } = require(`../models/users`);
+const connection = require(`../db/connection`);
 var instance = null;
 
 class UsersDAO {
@@ -11,7 +11,7 @@ class UsersDAO {
   async findUserByEmail(email) {
     try {
       const response = await new Promise((resolve, reject) => {
-        const query = "SELECT * FROM users WHERE email = ?";
+        const query = `SELECT * FROM users WHERE email = ?`;
         connection.query(query, [email], (err, result) => {
           if (err) reject(new Error(err.message));
           if (result.length > 0) resolve(new Users(result));
@@ -27,13 +27,13 @@ class UsersDAO {
 
   async insertUser(name, email) {
     try {
-      var split = name.split(" ");
+      var split = name.split(` `);
       const response = await new Promise((resolve, reject) => {
-        const query = "INSERT INTO users SET ? ";
+        const query = `INSERT INTO users SET ? `;
         connection.query(query, 
           { 
-            first_name: name.substring(0, name.indexOf(" ")), 
-            last_name: name.substring(name.indexOf(" ") + 1, name.length()),
+            first_name: name.substring(0, name.indexOf(` `)), 
+            last_name: name.substring(name.indexOf(` `) + 1, name.length()),
             email: email
           }, (err, result) => {
             if (err) reject(new Error(err.message));

@@ -17,6 +17,10 @@ h1 {
   text-align: center;
 }
 
+button {
+  background-color: #81b941;
+}
+
 .login {
   width: 30%;
   min-width: 280px;
