@@ -2,11 +2,11 @@ const axios = require('axios');
 
 apiKey = process.env.API_KEY;
 
-const searchRequest = (searchText) => {
+const searchRequest = async (searchText) => {
     const encodedText = encodeURIComponent(searchText);
     try {
         const number = 1;
-        return axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodedText}&number=${number}&apiKey=${apiKey}`)
+        return await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodedText}&number=${number}&apiKey=${apiKey}`)
     }
 
     catch(err){
@@ -14,9 +14,9 @@ const searchRequest = (searchText) => {
     }
 }
 
-const summaryRequest = (id) => {
+const summaryRequest = async (id) => {
     try {
-        return axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${apiKey}`);
+        return await axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${apiKey}`);
     }catch (err){
         return err;
     }
