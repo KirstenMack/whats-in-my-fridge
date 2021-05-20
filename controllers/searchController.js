@@ -20,10 +20,14 @@ exports.search = async function(req, res) {
                     };
                     recipes.push(recipe);
                 }
-                res.render('index', {recipeListResults: recipes})
+                if(recipes.length === 0) {
+                    throw new Error('No search results')
+                    return
+                }
+                res.render('index',{recipeListResults: recipes})
             })
-            .catch(() => {
-                console.error;
+            .catch((e) => {
+               res.status(404).send({error: "Could not find recipe results: " + e});
             })
 };
 
@@ -32,8 +36,12 @@ exports.searchDetails = async function(req, res) {
     const id = req.params.id;
     console.log(id);
     if(!!id) {
-        let description = await spoonacular.summaryRequest(id);
-        console.log(description.data['summary'])
-        res.status(200).json({desc: description.data['summary']})
+        try {
+            let description = await spoonacular.summaryRequest(id);
+            console.log(description.data['summary'])
+            res.status(200).json({desc: description.data['summary']})
+        } catch (e){
+            res.status(404).send({error: "Could not find recipe description: " + e});
+        }
     }
 };
