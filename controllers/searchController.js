@@ -13,31 +13,27 @@ exports.search = async function(req, res) {
                     const title = response.data[i].title;
                     const image = response.data[i].image;
                     const recipe = {
-                        "id": id,
-                        "title": title,
-                        "image": image,
-                        "description": null
+                        recipeId: id,
+                        name: title,
+                        image: image,
+                        description: null
                     };
                     recipes.push(recipe);
                 }
-                return recipes
-            })
-            .then(async function (recipes){
-                for (const item of recipes) {
-                   let description = await spoonacular.summaryRequest(item.id);
-                   item.description = description.data['summary'];
-                }
-                return recipes
-            })
-            .then(function (recipes) {
-                console.log( recipes[0]['description'])
-                res.render('index', {
-                    name: recipes[0]['title'],
-                    image: recipes[0]['image'],
-                    description: recipes[0]['description']
-                });
+                res.render('index', {recipeListResults: recipes})
             })
             .catch(() => {
                 console.error;
             })
+};
+
+exports.searchDetails = async function(req, res) {
+    console.log("In controller")
+    const id = req.params.id;
+    console.log(id);
+    if(!!id) {
+        let description = await spoonacular.summaryRequest(id);
+        console.log(description.data['summary'])
+        res.status(200).json({desc: description.data['summary']})
+    }
 };

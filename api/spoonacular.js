@@ -5,8 +5,9 @@ apiKey = process.env.API_KEY;
 const searchRequest = async (searchText) => {
     const encodedText = encodeURIComponent(searchText);
     try {
-        const number = 1;
-        return await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodedText}&number=${number}&apiKey=${apiKey}`)
+        const numberResults = 5;
+        let response =  await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodedText}&number=${numberResults}&apiKey=${apiKey}`)
+        return response
     }
 
     catch(err){
@@ -16,7 +17,8 @@ const searchRequest = async (searchText) => {
 
 const summaryRequest = async (id) => {
     try {
-        return await axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${apiKey}`);
+        let response =  await axios.get(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${apiKey}`);
+        return response
     }catch (err){
         return err;
     }
