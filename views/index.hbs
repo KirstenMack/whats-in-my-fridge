@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
-<title>{{title}}</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="google-signin-client_id" content="7142003137-m0qds4ukao168265tm0iae3fjpl1f4er.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<link rel="stylesheet" href="stylesheets/style.css">
-<link rel="stylesheet" href="stylesheets/customStyle.css">
-<body>
 
-<!-- Navbar (sit on top) -->
-<nav class="navbar w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-        <a href="/" class="w3-bar-item w3-button"><img id="homeImage" class="logo" src="images/logo.svg" alt="Small logo of a red fridge"></a>
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id"
+        content="7142003137-m0qds4ukao168265tm0iae3fjpl1f4er.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/customStyle.css">
+    <link rel="icon" href="/images/favicon.ico">
+</head>
+
+<body>
+    <!-- Navbar (sit on top) -->
+    <nav class="navbar w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+        <a href="/" class="w3-bar-item w3-button"><img id="homeImage" class="logo" src="images/logo.svg"
+                alt="Small logo of a red fridge"></a>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
             <a href="#about" class="w3-bar-item w3-button">About</a>
@@ -20,101 +26,117 @@
             {{#if user}}<a href="#" onclick="signOut();" class="w3-bar-item w3-button">Sign out</a>
             {{else}}<a href="/login" class="w3-bar-item w3-button">Login</a>{{/if}}
         </div>
-</nav>
+    </nav>
 
-<!-- Header -->
-<header class="header-section"id="home">
-    <img id="homeImage" src="images/ello-AEU9UZstCfs-unsplash.jpg" alt="An image of Inside a well stocked Fridge" width ="1500" height="750">
-    <h1 class="header-text">What's In Your Fridge?</h1>
-</header>
+    <!-- Header -->
+    <header class="header-section" id="home">
+        <img id="homeImage" src="images/ello-AEU9UZstCfs-unsplash.jpg" alt="An image of Inside a well stocked Fridge"
+            width="1500" height="750">
+        <h1 class="header-text">What's In Your Fridge?</h1>
+    </header>
 
-<!-- Page content -->
-<main class="w3-content" style="max-width:1100px">
+    <!-- Page content -->
+    <main class="w3-content" style="max-width:1100px">
 
-    <!-- About Section -->
-    <section class="w3-row w3-padding-64" id="about">
-        <img src="/images/andy-chilton-0JFveX0c778-unsplash.jpg" class="split-at-600 decor-image w3-hide-small" alt="Table covered in baking tools and ingredients">
+        <!-- About Section -->
+        <section class="w3-row w3-padding-64" id="about">
+            <img src="/images/andy-chilton-0JFveX0c778-unsplash.jpg" class="split-at-600 decor-image w3-hide-small"
+                alt="Table covered in baking tools and ingredients">
 
-        <div class="split-at-600 w3-padding-large">
-            <h1 class="w3-center">About What's In Your Fridge?</h1><br>
-            <h5 class="w3-center">Helping Hungry Humans Since 2021</h5>
-            <p class="w3-large"> What's In Your Fridge was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
-            <p class="w3-large w3-text-grey w3-hide-medium">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-    </section>
+            <div class="split-at-600 w3-padding-large">
+                <h1 class="w3-center">About What's In Your Fridge?</h1><br>
+                <h5 class="w3-center">Helping Hungry Humans Since 2021</h5>
+                <p class="w3-large"> What's In Your Fridge was founded in blabla by Mr. Smith in lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur.We only use <span
+                        class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
+                <p class="w3-large w3-text-grey w3-hide-medium">Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod
+                    temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </section>
 
-    <hr>
+        <hr>
 
-    <!-- Search a Recipe Section -->
-    <section class="w3-container w3-padding-64" id="search">
-        <h1>Search for a Recipe</h1><br>
-        <form class="split-at-600 w3-padding-large" action="/search" method="post">
-        <p>Input absolutely any ingredient in your fridge and we'll return a recipe! </p>
-        <p class="w3-text-blue-grey w3-large"><b>{{response}}</b></p>
-        <h4>Input ingredients to find a recipe: </h4>
-            <p><input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required name="Ingredients" id="searchIngredients"></p>
-            <p><button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button></p>
-            <label class="alert-danger" id="searchError" style="display: none">Oh No! We have no recipes that match your search...</label>
-        </form>
+        <!-- Search a Recipe Section -->
+        <section class="w3-container w3-padding-64" id="search">
+            <h1>Search for a Recipe</h1><br>
+            <form class="split-at-600 w3-padding-large" action="/search" method="post">
+                <p>Input absolutely any ingredient in your fridge and we'll return a recipe! </p>
+                <p class="w3-text-blue-grey w3-large"><b>{{response}}</b></p>
+                <h4>Input ingredients to find a recipe: </h4>
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required
+                        name="Ingredients" id="searchIngredients"></p>
+                <p><button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button></p>
+                <label class="alert-danger" id="searchError" style="display: none">Oh No! We have no recipes that match
+                    your search...</label>
+            </form>
 
-        <img class="split-at-600 decor-image w3-image" src={{image}}>
-    </section>
+            <img class="split-at-600 decor-image w3-image" src={{image}}>
+        </section>
         <div class="w3-col l6 w3-padding-large">
             <ul class="list" id="recipeList">
                 {{#each recipeListResults}}
-                    <li>
-                        <img class="thumb" src={{image}}>
-                        <h3> {{name}} </h3>
-                        <h5> Based on your search, you are missing the following ingredients: </h5>
-                        <ul>
-                            {{#each missingIngredients}}
-                                <li> {{this}}</li>
-                            {{/each}}
-                        </ul>
-                        <button id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" on> Show Details </button>
-                        <p id="details-{{@index}}" > {{description}} </p>
-                        <a target="_blank" style="display: none" id="url-{{@index}}"  rel="Link to {{name}} recipe" href={{url}} > Go to this recipe </a>
-                    </li>
+                <li>
+                    <img class="thumb" src={{image}}>
+                    <h3> {{name}} </h3>
+                    <h5> Based on your search, you are missing the following ingredients: </h5>
+                    <ul>
+                        {{#each missingIngredients}}
+                        <li> {{this}}</li>
+                        {{/each}}
+                    </ul>
+                    <button id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" on> Show Details
+                    </button>
+                    <p id="details-{{@index}}"> {{description}} </p>
+                    <a target="_blank" style="display: none" id="url-{{@index}}" rel="Link to {{name}} recipe"
+                        href={{url}}> Go to this recipe </a>
+                </li>
                 {{/each}}
             </ul>
         </div>
-    </div>
+        </div>
 
-    <!-- Fridge Contents Section -->
-    <section class="w3-row w3-padding-64" id="fridge">
-        <dl class="split-at-600 w3-padding-large">
-            <h1 class="w3-center">Tell Us What's in Your Fridge</h1><br>
-            <dt>Bread Basket</h4>
-            <dd class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+        <!-- Fridge Contents Section -->
+        <section class="w3-row w3-padding-64" id="fridge">
+            <dl class="split-at-600 w3-padding-large">
+                <h1 class="w3-center">Tell Us What's in Your Fridge</h1><br>
+                <dt>Bread Basket</h4>
+                <dd class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
 
-            <dt>Honey Almond Granola with Fruits</h4>
-            <dd class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+                <dt>Honey Almond Granola with Fruits</h4>
+                <dd class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
 
-            <dt>Belgian Waffle</h4>
-            <dd class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
+                <dt>Belgian Waffle</h4>
+                <dd class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
 
-            <dt>Scrambled eggs</h4>
-            <dd class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+                <dt>Scrambled eggs</h4>
+                <dd class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
 
-            <dt>Blueberry Pancakes</h4>
-            <dd class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
-        </dl>
+                <dt>Blueberry Pancakes</h4>
+                <dd class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
+            </dl>
 
-        <img src="/images/pink-fridge.jpeg" class="split-at-600 decor-image" alt="Lady looking into fridge">
-    </section>
+            <img src="/images/pink-fridge.jpeg" class="split-at-600 decor-image" alt="Lady looking into fridge">
+        </section>
 
-    <hr>
+        <hr>
 
-    <!-- End page content -->
-</main>
+        <!-- End page content -->
+    </main>
 
-<!-- Footer -->
-<footer class="w3-center w3-light-grey w3-padding-32">
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
+    <!-- Footer -->
+    <footer class="w3-center w3-light-grey w3-padding-32">
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
+                class="w3-hover-text-green">w3.css</a></p>
+    </footer>
 
 </body>
 <div class="g-signin2"></div>
 <script src="javascripts/recipeList.js"> </script>
 <script type="text/javascript" src="javascripts/google.js"></script>
+
 </html>
