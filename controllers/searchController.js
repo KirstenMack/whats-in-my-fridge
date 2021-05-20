@@ -12,10 +12,16 @@ exports.search = async function(req, res) {
                     const id = response.data[i].id;
                     const title = response.data[i].title;
                     const image = response.data[i].image;
+                    const missingIngredients = []
+                    response.data[i].missedIngredients.forEach((element) => {
+                        missingIngredients.push(element.name);
+                    })
+                    console.log(missingIngredients);
                     const recipe = {
                         recipeId: id,
                         name: title,
                         image: image,
+                        missingIngredients: missingIngredients,
                         description: null
                     };
                     recipes.push(recipe);
