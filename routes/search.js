@@ -7,4 +7,5 @@ router.post('/', searchController.search);
 
 router.get(`/details/:id`, searchController.searchDetails);
 
+
 module.exports = router;

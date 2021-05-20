@@ -24,7 +24,17 @@ const summaryRequest = async (id) => {
     }
 }
 
+const infoRequest = async (id) => {
+    try {
+        let response =  await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${apiKey}`);
+        return response
+    }catch (err){
+        return err;
+    }
+}
+
 module.exports = {
     searchRequest,
-    summaryRequest
+    summaryRequest,
+    infoRequest
 }

@@ -64,9 +64,16 @@
                 {{#each recipeListResults}}
                     <li>
                         <img class="thumb" src={{image}}>
-                        <h4> {{name}} </h4>
+                        <h3> {{name}} </h3>
+                        <h5> Based on your search, you are missing the following ingredients: </h5>
+                        <ul>
+                            {{#each missingIngredients}}
+                                <li> {{this}}</li>
+                            {{/each}}
+                        </ul>
                         <button id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" on> Show Details </button>
                         <p id="details-{{@index}}" > {{description}} </p>
+                        <a target="_blank" style="display: none" id="url-{{@index}}"  rel="Link to {{name}} recipe" href={{url}} > Go to this recipe </a>
                     </li>
                 {{/each}}
             </ul>
