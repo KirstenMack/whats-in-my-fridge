@@ -12,6 +12,8 @@ function fetchId (id) {
         })
         .then(function (data){
             document.getElementById('details-'+id).innerHTML = data.desc;
+            document.getElementById('url-'+id).style.display = 'block';
+            document.getElementById('url-'+id).setAttribute('href', data.url);
         })
         .catch(function(error){
             console.log(error);
