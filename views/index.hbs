@@ -4,19 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="stylesheets/style.css">
-<style>
-    body {font-family: "Times New Roman", Georgia, Serif;}
-    h1, h2, h3, h4, h5, h6 {
-        font-family: "Playfair Display";
-        letter-spacing: 5px;
-    }
-</style>
+<link rel="stylesheet" href="stylesheets/customStyle.css">
 <body>
 
 <!-- Navbar (sit on top) -->
-<div class="w3-top">
-    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-        <a href="/" class="w3-bar-item w3-button"><img id="homeImage" class="logo" src="images/logo.svg" alt="Inside a Fridge"></a>
+<nav class="navbar w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+        <a href="/" class="w3-bar-item w3-button"><img id="homeImage" class="logo" src="images/logo.svg" alt="Small logo of a red fridge"></a>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
             <a href="/login" class="w3-bar-item w3-button">Login</a>
@@ -24,83 +17,72 @@
             <a href="#search" class="w3-bar-item w3-button">Search</a>
             <a href="#fridge" class="w3-bar-item w3-button">Fridge</a>
         </div>
-    </div>
-</div>
+</nav>
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
-    <img id="homeImage" src="images/ello-AEU9UZstCfs-unsplash.jpg" alt="Inside a Fridge" width ="1500" height="750">
-    <div class="w3-display-bottomleft w3-padding-large w3-opacity">
-        <h1 class="w3-xxlarge">What's In Your Fridge?</h1>
-    </div>
+    <img id="homeImage" src="images/ello-AEU9UZstCfs-unsplash.jpg" alt="An image of Inside a well stocked Fridge" width ="1500" height="750">
+    <h1 class="main-header">What's In Your Fridge?</h1>
 </header>
 
 <!-- Page content -->
-<div class="w3-content" style="max-width:1100px">
+<main class="w3-content" style="max-width:1100px">
 
     <!-- About Section -->
-    <div class="w3-row w3-padding-64" id="about">
-        <div class="w3-col m6 w3-padding-large w3-hide-small">
-            <img src="/images/andy-chilton-0JFveX0c778-unsplash.jpg" class="w3-round w3-image w3-opacity-min" alt="Baking table" width="600" height="750">
-        </div>
+    <section class="w3-row w3-padding-64" id="about">
+        <img src="/images/andy-chilton-0JFveX0c778-unsplash.jpg" class="split-at-600 w3-round w3-opacity-min w3-padding-large w3-hide-small" alt="Table covered in baking tools and ingredients">
 
-        <div class="w3-col m6 w3-padding-large">
+        <div class="split-at-600 w3-padding-large">
             <h1 class="w3-center">About What's In Your Fridge?</h1><br>
             <h5 class="w3-center">Helping Hungry Humans Since 2021</h5>
             <p class="w3-large"> What's In Your Fridge was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
             <p class="w3-large w3-text-grey w3-hide-medium">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
-    </div>
+    </section>
 
     <hr>
 
     <!-- Search a Recipe Section -->
-    <div class="w3-container w3-padding-64" id="search">
+    <section class="w3-container w3-padding-64" id="search">
         <h1>Search for a Recipe</h1><br>
-        <div class="w3-col l6 w3-padding-large">
-            <p>Input absolutely any ingredient in your fridge and we'll return a recipe! </p>
-            <p class="w3-text-blue-grey w3-large"><b>{{response}}</b></p>
-            <h4>Input ingredients to find a recipe: </h4>
-            <form action="/search/search" method="post">
-                <p><input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required name="Ingredients" id="searchIngredients"></p>
-                <p><button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button></p>
-            </form>
-        </div>
+        <form class="split-at-600 w3-padding-large" action="/search/search" method="post">
+        <p>Input absolutely any ingredient in your fridge and we'll return a recipe! </p>
+        <p class="w3-text-blue-grey w3-large"><b>{{response}}</b></p>
+        <h4>Input ingredients to find a recipe: </h4>
+            <p><input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required name="Ingredients" id="searchIngredients"></p>
+            <p><button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button></p>
+        </form>
 
-        <div class="w3-col l6 w3-padding-large">
-            <img class="w3-round w3-image w3-opacity-min" src={{image}}>
-        </div>
-    </div>
+        <img class="split-at-600 w3-padding-large w3-round w3-image w3-opacity-min" src={{image}}>
+    </section>
 
     <!-- Fridge Contents Section -->
-    <div class="w3-row w3-padding-64" id="fridge">
-        <div class="w3-col l6 w3-padding-large">
+    <section class="w3-row w3-padding-64" id="fridge">
+        <dl class="split-at-600 w3-padding-large">
             <h1 class="w3-center">Tell Us What's in Your Fridge</h1><br>
-            <h4>Bread Basket</h4>
-            <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+            <dt>Bread Basket</h4>
+            <dd class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
 
-            <h4>Honey Almond Granola with Fruits</h4>
-            <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+            <dt>Honey Almond Granola with Fruits</h4>
+            <dd class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
 
-            <h4>Belgian Waffle</h4>
-            <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
+            <dt>Belgian Waffle</h4>
+            <dd class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
 
-            <h4>Scrambled eggs</h4>
-            <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+            <dt>Scrambled eggs</h4>
+            <dd class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
 
-            <h4>Blueberry Pancakes</h4>
-            <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
-        </div>
+            <dt>Blueberry Pancakes</h4>
+            <dd class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
+        </dl>
 
-        <div class="w3-col l6 w3-padding-large">
-            <img src="/images/pink-fridge.jpeg" class="w3-round w3-image w3-opacity-min" alt="Lady looking into fridge" style="width:100%">
-        </div>
-    </div>
+        <img src="/images/pink-fridge.jpeg" class="split-at-600 w3-padding-large w3-opacity-min" alt="Lady looking into fridge">
+    </section>
 
     <hr>
 
     <!-- End page content -->
-</div>
+</main>
 
 <!-- Footer -->
 <footer class="w3-center w3-light-grey w3-padding-32">

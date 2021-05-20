@@ -1,0 +1,35 @@
+.navbar {
+    top: 0;
+    position: fixed;
+    z-index: 10;
+}
+
+.main-header {
+    font-size: 36px;
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+    padding: 12px 24px;
+    opacity: 0.60;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.split-at-600 {
+    float: left;
+    width: 100%
+}
+
+@media (min-width: 600px) {
+    .split-at-600 {
+        width: 49%;
+    }
+}
+
+
+body {font-family: "Times New Roman", Georgia, Serif;}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+}
