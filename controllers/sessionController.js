@@ -13,8 +13,7 @@ const verified = (token) => {
     });
 };
 
-const authenticateUser = (req) => {
-  user = req.session.authID;
+const authenticateUser = (user) => {
   if (user !== undefined && user.id !== null) return true;
   else return false;
 };
