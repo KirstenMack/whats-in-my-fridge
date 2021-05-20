@@ -18,6 +18,7 @@ searchButton.addEventListener('click', () => {
 
 function fetchId (id) {
     const button = document.getElementById('detsButton-'+id);
+    button.setAttribute("hidden", true)
     const value = button.value;
     fetch('search/details/'+value, {method: 'GET'})
         .then(function(response){

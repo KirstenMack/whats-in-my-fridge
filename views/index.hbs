@@ -58,38 +58,37 @@
 
         <img class="split-at-600 decor-image" src={{image}}>
     </section>
-        <div class="w3-col l6 w3-padding-large">
-            <ul class="list" id="recipeList">
-                {{#each recipeListResults}}
-                    <li>
-                        <img class="thumb" src={{image}}>
-                        <h4> {{name}} </h4>
-                        <button id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" on> Show Details </button>
-                        <p id="details-{{@index}}" > {{description}} </p>
-                    </li>
-                {{/each}}
-            </ul>
-        </div>
-    </div>
+    <section class="recipe-results">
+        <ul class="list multi-col-list" id="recipeList">
+            {{#each recipeListResults}}
+                <li class="list-item">
+                    <img class="result-image" src={{image}}>
+                    <h4> {{name}} </h4>
+                    <button class="result-title" id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" on> Show Details </button>
+                    <p class="result-desc" id="details-{{@index}}" > {{description}} </p>
+                </li>
+            {{/each}}
+        </ul>
+    </section>
 
     <!-- Fridge Contents Section -->
     <section class="w3-row section" id="fridge">
         <dl class="split-at-600 w3-padding-large">
             <h1 class="text-center">Tell Us What's in Your Fridge</h1><br>
-            <dt class="maintext">Bread Basket</h4>
-            <dd class="subtext">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
+            <dt class="maintext">Bread Basket</dt>
+            <dd class="subtext">Assortment of fresh baked fruit breads and muffins 5.50</dd><br>
 
-            <dt class="maintext">Honey Almond Granola with Fruits</h4>
-            <dd class="subtext">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
+            <dt class="maintext">Honey Almond Granola with Fruits</dt>
+            <dd class="subtext">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</dd><br>
 
-            <dt class="maintext">Belgian Waffle</h4>
-            <dd class="subtext">Vanilla flavored batter with malted flour 7.50</p><br>
+            <dt class="maintext">Belgian Waffle</dt>
+            <dd class="subtext">Vanilla flavored batter with malted flour 7.50</dd><br>
 
-            <dt class="maintext">Scrambled eggs</h4>
-            <dd class="subtext">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
+            <dt class="maintext">Scrambled eggs</dt>
+            <dd class="subtext">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</dd><br>
 
-            <dt class="maintext">Blueberry Pancakes</h4>
-            <dd class="subtext">With syrup, butter and lots of berries 8.50</p>
+            <dt class="maintext">Blueberry Pancakes</dt>
+            <dd class="subtext">With syrup, butter and lots of berries 8.50</dd>
         </dl>
 
         <img src="/images/pink-fridge.jpeg" class="split-at-600 decor-image" alt="Lady looking into fridge">
