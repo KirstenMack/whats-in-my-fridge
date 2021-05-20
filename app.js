@@ -6,12 +6,17 @@ const logger = require('morgan');
 const dotenv = require('dotenv').config({path: './appconfig.env'});
 const mysql = require('./db/connection');
 const session = require('express-session');
+const contents = require('./contents');
+const mysqll = require('mysql');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const searchRouter = require('./routes/search');
-
+const contentsRouter = require('./routes/contents');
+const ingredientsRouter = require('./routes/ingredients');
 const app = express();
+
+require('dotenv').config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +40,17 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
+app.use('/contents', contentsRouter);
+app.use('/ingredient',ingredientsRouter)
+app.use('/',ingredientsRouter);
+
+//homePage Route
+// app.get('/', (req, res) => res.render('index', {
+//   title: 'Fridge Content',
+//   contents
+// }));
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,5 +71,8 @@ app.use(function(err, req, res, next) {
 app.listen('3000', () => {
 	console.log('Sever listening on port 3000');
 });
+
+
+//new path
 
 module.exports = app;
