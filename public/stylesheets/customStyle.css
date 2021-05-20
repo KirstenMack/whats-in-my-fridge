@@ -1,0 +1,57 @@
+.navbar {
+    top: 0;
+    position: fixed;
+    z-index: 10;
+}
+
+.header-section {
+    max-width:1600px;
+    min-width:500px;
+    margin: auto;
+}
+
+.header-text {
+    font-size: 36px;
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+    padding: 12px 24px;
+    opacity: 0.60;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.split-at-600 {
+    float: left;
+    width: 100%
+}
+
+@media (min-width: 600px) {
+    .split-at-600 {
+        width: 49%;
+    }
+}
+
+@media (max-width: 600px) {
+    .hide-shrunk {
+        display: none;
+    }
+}
+
+.decor-image {
+    border-radius: 4px;
+    opacity: 0.75;
+    padding: 12px 24px;
+}
+
+
+.hide-shrunk {
+    display: none;
+}
+
+body {font-family: "Times New Roman", Georgia, Serif;}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+}
