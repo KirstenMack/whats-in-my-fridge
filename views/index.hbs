@@ -3,6 +3,8 @@
 <title>{{title}}</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-signin-client_id" content="7142003137-m0qds4ukao168265tm0iae3fjpl1f4er.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <link rel="stylesheet" href="stylesheets/style.css">
 <link rel="stylesheet" href="stylesheets/customStyle.css">
 <body>
@@ -12,10 +14,11 @@
         <a href="/" class="w3-bar-item w3-button"><img id="homeImage" class="logo" src="images/logo.svg" alt="Small logo of a red fridge"></a>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="w3-right w3-hide-small">
-            <a href="/login" class="w3-bar-item w3-button">Login</a>
             <a href="#about" class="w3-bar-item w3-button">About</a>
             <a href="#search" class="w3-bar-item w3-button">Search</a>
             <a href="#fridge" class="w3-bar-item w3-button">Fridge</a>
+            {{#if user}}<a href="#" onclick="signOut();" class="w3-bar-item w3-button">Sign out</a>
+            {{else}}<a href="/login" class="w3-bar-item w3-button">Login</a>{{/if}}
         </div>
 </nav>
 
@@ -111,5 +114,7 @@
 </footer>
 
 </body>
+<div class="g-signin2"></div>
 <script src="javascripts/recipeList.js"> </script>
+<script type="text/javascript" src="javascripts/google.js"></script>
 </html>
