@@ -4,7 +4,13 @@
     z-index: 10;
 }
 
-.main-header {
+.header-section {
+    max-width:1600px;
+    min-width:500px;
+    margin: auto;
+}
+
+.header-text {
     font-size: 36px;
     font-family: "Playfair Display";
     letter-spacing: 5px;
@@ -26,6 +32,22 @@
     }
 }
 
+@media (max-width: 600px) {
+    .hide-shrunk {
+        display: none;
+    }
+}
+
+.decor-image {
+    border-radius: 4px;
+    opacity: 0.75;
+    padding: 12px 24px;
+}
+
+
+.hide-shrunk {
+    display: none;
+}
 
 body {font-family: "Times New Roman", Georgia, Serif;}
 

@@ -11,7 +11,7 @@
 <nav class="navbar w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
         <a href="/" class="w3-bar-item w3-button"><img id="homeImage" class="logo" src="images/logo.svg" alt="Small logo of a red fridge"></a>
         <!-- Right-sided navbar links. Hide them on small screens -->
-        <div class="w3-right w3-hide-small">
+        <div class="w3-right hide-shrunk">
             <a href="/login" class="w3-bar-item w3-button">Login</a>
             <a href="#about" class="w3-bar-item w3-button">About</a>
             <a href="#search" class="w3-bar-item w3-button">Search</a>
@@ -20,9 +20,9 @@
 </nav>
 
 <!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+<header class="header-section"id="home">
     <img id="homeImage" src="images/ello-AEU9UZstCfs-unsplash.jpg" alt="An image of Inside a well stocked Fridge" width ="1500" height="750">
-    <h1 class="main-header">What's In Your Fridge?</h1>
+    <h1 class="header-text">What's In Your Fridge?</h1>
 </header>
 
 <!-- Page content -->
@@ -30,7 +30,7 @@
 
     <!-- About Section -->
     <section class="w3-row w3-padding-64" id="about">
-        <img src="/images/andy-chilton-0JFveX0c778-unsplash.jpg" class="split-at-600 w3-round w3-opacity-min w3-padding-large w3-hide-small" alt="Table covered in baking tools and ingredients">
+        <img src="/images/andy-chilton-0JFveX0c778-unsplash.jpg" class="split-at-600 decor-image hide-shrunk" alt="Table covered in baking tools and ingredients">
 
         <div class="split-at-600 w3-padding-large">
             <h1 class="w3-center">About What's In Your Fridge?</h1><br>
@@ -53,7 +53,7 @@
             <p><button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button></p>
         </form>
 
-        <img class="split-at-600 w3-padding-large w3-round w3-image w3-opacity-min" src={{image}}>
+        <img class="split-at-600 decor-image w3-image" src={{image}}>
     </section>
 
     <!-- Fridge Contents Section -->
@@ -76,7 +76,7 @@
             <dd class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
         </dl>
 
-        <img src="/images/pink-fridge.jpeg" class="split-at-600 w3-padding-large w3-opacity-min" alt="Lady looking into fridge">
+        <img src="/images/pink-fridge.jpeg" class="split-at-600 decor-image" alt="Lady looking into fridge">
     </section>
 
     <hr>
