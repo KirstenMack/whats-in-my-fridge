@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
 
-router.post("/login", userController.login);
+/* GET home page. */
+router.post("/signin", userController.signin);
+router.post("/signout", userController.signout);
+
 
 module.exports = router;
