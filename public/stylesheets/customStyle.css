@@ -8,6 +8,7 @@
     max-width:1600px;
     min-width:500px;
     margin: auto;
+    position: relative;
 }
 
 .header-text {
