@@ -47,16 +47,30 @@
     <!-- Search a Recipe Section -->
     <section class="w3-row section" id="search">
         <h1>Search for a Recipe</h1><br>
-        <form class="split-at-600 w3-padding-large" action="/search/search" method="post">
+        <form class="split-at-600 w3-padding-large" action="/search" method="post">
             <p>Input absolutely any ingredient in your fridge and we'll return a recipe! </p>
-            <p class="w3-text-blue-grey text-medium-18"><b>{{response}}</b></p>
+            <p class="w3-text-blue-grey w3-large"><b>{{response}}</b></p>
             <h4>Input ingredients to find a recipe: </h4>
             <p><input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required name="Ingredients" id="searchIngredients"></p>
             <p><button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button></p>
+            <label class="alert-danger" id="searchError" style="display: none">Oh No! We have no recipes that match your search...</label>
         </form>
 
         <img class="split-at-600 decor-image" src={{image}}>
     </section>
+        <div class="w3-col l6 w3-padding-large">
+            <ul class="list" id="recipeList">
+                {{#each recipeListResults}}
+                    <li>
+                        <img class="thumb" src={{image}}>
+                        <h4> {{name}} </h4>
+                        <button id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" on> Show Details </button>
+                        <p id="details-{{@index}}" > {{description}} </p>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 
     <!-- Fridge Contents Section -->
     <section class="w3-row section" id="fridge">
@@ -92,5 +106,5 @@
 </footer>
 
 </body>
-<script src="javascripts/search.js"></script>
+<script src="javascripts/recipeList.js"> </script>
 </html>
