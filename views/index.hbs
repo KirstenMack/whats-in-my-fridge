@@ -66,13 +66,16 @@
             <h1>Search for a Recipe</h1><br>
             <form class="split-at-600 w3-padding-large" action="/search" method="post">
                 <p>Input absolutely any ingredient in your fridge and we'll return a recipe! </p>
-                <p class="w3-text-blue-grey w3-large"><b>{{response}}</b></p>
+                <p class="w3-text-blue-grey w3-large">
+                    <b>{{response}}</b>
+                </p>
                 <h4>Input ingredients to find a recipe: </h4>
-                <p><input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required
-                        name="Ingredients" id="searchIngredients"></p>
-                <p><button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button></p>
-                <label class="alert-danger" id="searchError" style="display: none">Oh No! We have no recipes that match
-                    your search...</label>
+                <p>
+                    <input class="w3-input w3-padding-16" type="text" placeholder="Ingredients" required name="Ingredients" id="searchIngredients"></p>
+                <p>
+                    <button class="w3-button w3-light-grey w3-section" type="submit" id="searchBtn">SEARCH</button>
+                </p>
+                <label class="alert-danger" id="searchError" style="display: none">Oh No! We have no recipes that match your search...</label>
             </form>
 
             <img class="split-at-600 decor-image w3-image" src={{image}}>
@@ -98,28 +101,46 @@
                 {{/each}}
             </ul>
         </div>
-        </div>
+
+ <hr>
+
 
         <!-- Fridge Contents Section -->
         <section class="w3-row w3-padding-64" id="fridge">
-            <dl class="split-at-600 w3-padding-large">
-                <h1 class="w3-center">Tell Us What's in Your Fridge</h1><br>
-                <dt>Bread Basket</h4>
-                <dd class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
-
-                <dt>Honey Almond Granola with Fruits</h4>
-                <dd class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
-
-                <dt>Belgian Waffle</h4>
-                <dd class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
-
-                <dt>Scrambled eggs</h4>
-                <dd class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
-
-                <dt>Blueberry Pancakes</h4>
-                <dd class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
-            </dl>
-
+            <h1>Save your ingredients</h1><br>
+            <form class="split-at-600 w3-padding-large" action="/ingredients/save" method="POST">
+                {{#if user}}
+                    <p>Date night coming up? save your ingredients, we know what she wants for dinner! </p>
+                    <h4>Add your ingredients below</h4>
+                    <p>
+                        <input class="w3-input w3-padding-16" type="text" placeholder="Title" name="title" id="title">
+                        <input class="w3-input w3-padding-16" type="text" placeholder="Description" name="description" id="description">
+                        <input class="w3-input w3-padding-16" type="text" placeholder="Units" name="units" id="units">
+                    </p>
+                    <p>
+                        <button class="w3-button w3-light-grey w3-section" type="submit" id="saveBTtn">Add</button>
+                    </p>
+                    <p>
+                        <ul class="list" id="fridgeList">
+                            {{#each ingredientsList}}
+                                <li>
+                                    <lable id="ingredient-{{@index}}"><b>Title:</b>{{title}}</lable>
+                                    <lable id="ingredient-{{@index}}"><b>Desctipion:</b>{{description}}</lable>
+                                    <lable id="ingredient-{{@index}}"><b>Units</b>{{units}}</lable>
+                                    <button id="update-{{@index}}" value={{@index}} onClick="updateRecipe({{@index}})">Update</button>
+                                    <button id="delete-{{@index}}" value={{@index}} onClick="deleteRecipe({{@index}})">Delete</button>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </p>
+                {{else}}
+                    <p>
+                        In order to save your ingredients and impress your date, you'll have to log in! You know.. got to give some to get some.
+                        <br />
+                        <a href="/login" class="login-link">Login</a>
+                    </p>
+                {{/if}}
+            </form>
             <img src="/images/pink-fridge.jpeg" class="split-at-600 decor-image" alt="Lady looking into fridge">
         </section>
 
@@ -135,7 +156,7 @@
     </footer>
 
 </body>
-<div class="g-signin2"></div>
+<div class="g-signin2" style="display: none"></div>
 <script src="javascripts/recipeList.js"> </script>
 <script type="text/javascript" src="javascripts/google.js"></script>
 
