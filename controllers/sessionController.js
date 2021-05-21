@@ -1,5 +1,4 @@
 const google = require("../api/google");
-var user;
 
 const verified = (token) => {
   google
