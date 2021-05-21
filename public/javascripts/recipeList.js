@@ -1,4 +1,4 @@
-'use-strict'
+
 
 function fetchId (id) {
     const button = document.getElementById('detsButton-'+id);
@@ -17,7 +17,7 @@ function fetchId (id) {
         })
         .catch(function(error){
             console.log(error);
-        })
+        });
 }
 
 

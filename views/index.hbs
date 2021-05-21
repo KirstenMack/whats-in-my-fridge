@@ -122,6 +122,7 @@
                     </p>
                     <p>
                         <ul class="list" id="fridgeList">
+                            {{ingredientsList}}
                             {{#each ingredientsList}}
                                 <li>
                                     <lable id="ingredient-{{@index}}"><b>Title:</b>{{title}}</lable>
@@ -158,6 +159,7 @@
 </body>
 <div class="g-signin2" style="display: none"></div>
 <script src="javascripts/recipeList.js"> </script>
+<script src="javascripts/documentReady.js"> </script>
 <script type="text/javascript" src="javascripts/google.js"></script>
 
 </html>
