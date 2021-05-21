@@ -2,7 +2,6 @@
 
 function fetchId (id) {
     const button = document.getElementById('detsButton-'+id);
-    button.setAttribute("hidden", true)
     const value = button.value;
     fetch('search/details/'+value, {method: 'GET'})
         .then(function(response){
@@ -15,6 +14,7 @@ function fetchId (id) {
             document.getElementById('details-'+id).innerHTML = data.desc;
             document.getElementById('url-'+id).style.display = 'block';
             document.getElementById('url-'+id).setAttribute('href', data.url);
+            button.setAttribute("hidden", true)
         })
         .catch(function(error){
             console.log(error);

@@ -27,7 +27,7 @@
 
 <!-- Header -->
 <header class="header-section"id="home">
-    <img id="homeImage" src="images/ello-AEU9UZstCfs-unsplash.jpg" alt="An image of Inside a well stocked Fridge" width ="1500" height="750">
+    <img id="homeImage" src="images/ello-AEU9UZstCfs-unsplash.jpg" alt="An image of Inside a well stocked Fridge"  class="home-image" >
     <h1 class="header-text">What's In Your Fridge?</h1>
 </header>
 
@@ -57,7 +57,7 @@
             <p class="maintext text-large-28"><b>{{response}}</b></p>
             <h4>Input ingredients to find a recipe: </h4>
             <p><input class="simple-input" type="text" placeholder="Ingredients" required name="Ingredients" id="searchIngredients"></p>
-            <p><button class="grey-btn" type="submit" id="searchBtn">SEARCH</button></p>
+            <p><button type="submit" id="searchBtn" class="button-full">SEARCH</button></p>
             <label class="alert-danger" id="searchError" style="display: none">Oh No! We have no recipes that match your search...</label>
         </form>
 
@@ -71,14 +71,16 @@
                     <img class="result-image" src={{image}}>
                     <h3> {{name}} </h3>
                     <h5> Based on your search, you are missing the following ingredients: </h5>
-                    <ul>
+                    <ul class="small-list">
                         {{#each missingIngredients}}
                         <li> {{this}}</li>
                         {{/each}}
                     </ul>
+                    <button id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" class="button-full"  on> Show Details
+                    </button>
                     <p id="details-{{@index}}"> {{description}} </p>
-                    <a target="_blank" style="display: none" id="url-{{@index}}" rel="Link to {{name}} recipe"
-                        href={{url}}> Go to this recipe </a>
+                    <h5> <a target="_blank" style="display: none" id="url-{{@index}}" rel="Link to {{name}} recipe"
+                        href={{url}}> Go to this recipe </a> </h5>
                 </li>
             {{/each}}
         </ul>
