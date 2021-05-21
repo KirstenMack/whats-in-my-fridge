@@ -1,6 +1,7 @@
 "use strict";
 const IngredientsDAO = require("../dao/ingredientsDAO");
 const dao = IngredientsDAO.getInstance();
+const sessionHandler = require("../controllers/sessionController");
 
 exports.save = async (req, res) => {
   const user = req.session.authID;
@@ -18,8 +19,39 @@ exports.save = async (req, res) => {
   }
 };
 
-exports.update = async function (req, res) {};
+exports.fetchAll = async (req, res) => {
 
-exports.delete = async function (req, res) {};
+  try {
+    const user = req.session.authID;
+    const authenticated = sessionHandler.authenticateUser(user);
+    const ingredients = [];
+    if (authenticated) {
+      await dao.findIngredientsByUser(user).then((result) => {
+        for (var i = 0; i < result.length; i++) {
+          const id = result[i].id;
+          const title = result[i].title;
+          const description = result[i].description;
+          const units = result[i].units;
+          //To Make Module
+          const ingredient = {
+            id: id,
+            title: title,
+            description: description,
+            units: units,
+          };
+          ingredients.push(ingredient);
+        }
+      });
+    }
+    const jsonObject = JSON.stringify(ingredients);
+    res.render('index',{ingredientsList: ingredients});
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-exports.use = async function (req, res) {};
+exports.update = function (req, res) {};
+
+exports.delete = function (req, res) {};
+
+exports.use = function (req, res) {};

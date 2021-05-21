@@ -85,8 +85,8 @@
             {{/each}}
         </ul>
     </section>
-    
- <hr>    
+
+ <hr>
     <!-- Fridge Contents Section -->
     <section class="section" id="fridge">
         <h1>Save your ingredients</h1><br>
@@ -104,11 +104,12 @@
                 </p>
                 <p>
                     {{!-- <button class="w3-button w3-light-grey w3-section" type="submit" id="saveBTtn">Add</button> --}}
-                    <button class="grey-btn" type="submit" id="saveBTtn" class="button-full">Add</button>
+                    <button type="submit" id="saveBTtn" class="button-full">Add</button>
                 </p>
                 <p>
                     <ul class="list" id="fridgeList">
-                        {{#each ingredientsList}}
+                        {{ingredientsList}}
+                            {{#each ingredientsList}}
                             <li>
                                 <lable id="ingredient-{{@index}}"><b>Title:</b>{{title}}</lable>
                                 <lable id="ingredient-{{@index}}"><b>Desctipion:</b>{{description}}</lable>
@@ -141,6 +142,7 @@
 
 </body>
 <button type="button" class="g-signin2" style="display: none"></button>
+<script src="javascripts/documentReady.js"> </script>
 <script type="text/javascript" src="javascripts/google.js"></script>
 <script src="javascripts/recipeList.js"> </script>
 </html>
