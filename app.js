@@ -6,19 +6,13 @@ const logger = require('morgan');
 const dotenv = require('dotenv').config({ path: './appconfig.env' });
 const mysql = require('./db/connection');
 const session = require('express-session');
-const contents = require('./contents');
-const mysqll = require('mysql');
-const {
-  createPool
-} = require('mysql');
-
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const searchRouter = require('./routes/search');
 const contentsRouter = require('./routes/contents');
 const ingredientsRouter = require('./routes/ingredients');
-// const connection = require('./db/connection');
+
 const app = express();
 
 require('dotenv').config();
@@ -46,7 +40,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
 app.use('/contents', contentsRouter);
-app.use('/ingredient', ingredientsRouter)
 app.use('/', ingredientsRouter); //sub route look here
 
 
@@ -69,24 +62,4 @@ app.use(function (err, req, res, next) {
 app.listen('3000', () => {
   console.log('Sever listening on port 3000');
 });
-
-//connect pool
-const pool = createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "test",
-  connectionLimit: 10
-});
-
-//connect
-pool.getConnection((err, connection) => {
-  if (err) throw err;
-  console.log('Connected as ID ' + connection.threadId);
-});
-
-
-///create button that will call for fridge content
-//new path
-
 module.exports = app;

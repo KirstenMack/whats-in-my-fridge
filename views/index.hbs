@@ -99,8 +99,8 @@
             <dl class="split-at-600 w3-padding-large">
                 <h1 class="text-center">Wonder What's in Your Fridge {{title}} ?</h1><br>
                 {{#each rows}}
-                <dt class="maintext">{{this.ingredient_name}} : {{ this.quantity}} Qaunity/units</dt>
-                <dd class="subtext"><a href="{{this.id}}" type="button" class="btn btn-light btn-small ">Delete</a></dd>
+                <dt class="maintext">{{this.title}} : {{ this.units}} Qaunity/units</dt>
+                <dd class="subtext"><a href="{{this.id}}" type="submit" class="btn btn-light btn-small ">Delete</a></dd>
                 <br>
                 {{/each}}
 
@@ -111,9 +111,13 @@
                     <label for="food">Ingredient</label>
                     <input type="text" name="ingredient" class="form-control">
                 </div>
+                 <div class="form-group">
+                    <label for="food">description</label>
+                    <input type="text" name="description" class="form-control">
+                </div>
                 <div class="form-group">
                     <label for="food">Qaunity</label>
-                    <input type="number" name="unit" class="form-control">
+                    <input type="text" name="unit" class="form-control">
                 </div>
                 <input type="submit" value="add Ingredient" class="btn btn-primary btn-block">
             </form>
