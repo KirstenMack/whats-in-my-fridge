@@ -59,13 +59,4 @@ router.delete('/:id', (req, res) => {
     }
 });
 
-
-// router.get('/', function(req, res, next) {
-//     res.render('index', {
-//         title: 'Whats in my fridge?',
-//         contents: contents
-//     });
-// });
-
-
 module.exports = router;

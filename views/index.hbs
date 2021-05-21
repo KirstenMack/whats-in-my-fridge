@@ -93,87 +93,42 @@
             </div>
         </div>
 
-        <div><table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">ingredient</th>
-      <th scope="col">type</th>
-      <th scope="col">units</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Food name</td>
-      <td>type</td>
-      <td>units   <a href="#" type="button" class="bw3-button w3-light-grey w3-section">View</a>
-    <a href="#" type="button" class="bw3-button w3-light-grey w3-section">Delete</a></td>
-    </tr>
+        <hr>
 
-  </tbody>
-</table></div>
-
-<br/>
-{{!-- <br/><br/><br/><br/><br/>      <ul>
-                {{#each contents}}
-                <li class="list-group-item">{{this.name}} : {{ this.title}} <a href="{{this.id}}" type="button"
-                        class="btn btn-light btn-small ">Delete</a>></li>
+        <section class="w3-row section" id="fridge">
+            <dl class="split-at-600 w3-padding-large">
+                <h1 class="text-center">Wonder What's in Your Fridge {{title}} ?</h1><br>
+                {{#each rows}}
+                <dt class="maintext">{{this.ingredient_name}} : {{ this.quantity}} Qaunity/units</dt>
+                <dd class="subtext"><a href="{{this.id}}" type="button" class="btn btn-light btn-small ">Delete</a></dd>
+                <br>
                 {{/each}}
-            </ul> --}}
-        <!-- Fridge Contents Section -->
-        {{!-- <div class="w3-row w3-padding-64" id="fridge">
-            <div class="w3-col l6 w3-padding-large">
-                {{!-- <h1 class="w3-center">Tell Us What's in Your Fridge</h1><br>
-                <h4>Bread Basket</h4>
-                <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
 
-                <h4>Honey Almond Granola with Fruits</h4>
-                <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
-
-                <h4>Belgian Waffle</h4>
-                <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
-
-                <h4>Scrambled eggs</h4>
-                <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
-
-                <h4>Blueberry Pancakes</h4>
-                <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
-            </div>
-
-            <div class="w3-col l6 w3-padding-large">
-                <img src="/images/pink-fridge.jpeg" class="w3-round w3-image w3-opacity-min"
-                    alt="Lady looking into fridge" style="width:100%">
-            </div> --}}<h1 class="text-center mb-3">{{title}}</h1>
-
-            <h4>Foods</h4>
-            <ul>
-                {{#each contents}}
-                <li class="list-group-item">{{this.name}} : {{ this.title}} <a href="{{this.id}}" type="button"
-                        class="btn btn-light btn-small ">Delete</a>></li>
-                {{/each}}
-            </ul>
-
-            <form action="/contents/" method="POST" class="mb-4">
+            </dl>
+            <h3>Add some Items?</h3>
+            <form action="/addIngredient" method="POST" class="mb-4">
                 <div class="form-group">
                     <label for="food">Ingredient</label>
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="ingredient" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="food">IngredientE</label>
-                    <input type="text" name="title" class="form-control">
+                    <label for="food">Qaunity</label>
+                    <input type="number" name="unit" class="form-control">
                 </div>
                 <input type="submit" value="add Ingredient" class="btn btn-primary btn-block">
             </form>
 
-        </div>
+            <img src="/images/pink-fridge.jpeg" class="split-at-600 decor-image" alt="Lady looking into fridge">
+        </section>
 
-        <hr>
+{{!-- 
+        <form action="/" method="POST" class="mb-4">
+            <input type="search" value="search" name="search" class="form-control me-2">
+            <button class="btn btn-outline-light" type="submit"> Search</button>
+        </form> --}}
+    </div>
 
-        <!-- End page content -->
-    </div> --}}
-
-    <!-- Footer --> 
+    <!-- Footer -->
     <footer class="w3-center w3-light-grey w3-padding-32">
         <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
                 class="w3-hover-text-green">w3.css</a></p>

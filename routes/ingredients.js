@@ -3,6 +3,6 @@ const router = express.Router();
 const ingredientController = require('../controllers/ingredientController');
 
 
-router.get('/view', ingredientController.view);
+// router.get('/view', ingredientController.view);
 console.log("hey")
 module.exports = router;
