@@ -189,4 +189,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 45px;
 }
 .small-list{
-    margin-right: 40px;}
+    margin-right: 40px;
+}
+    
+.logo {
+    max-width: 110px;
+    max-height: 110px;
+}
