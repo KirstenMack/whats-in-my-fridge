@@ -65,7 +65,7 @@
 
 @media (max-width: 600px) {
     .hide-shrunk {
-        display: none !important
+        display: none;
     }
 }
 
