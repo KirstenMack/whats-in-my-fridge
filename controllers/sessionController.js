@@ -1,29 +1,21 @@
 const google = require("../api/google");
-var instance = null;
+var user;
 
-class SessionHandler {
-  static getInstance() {
-    return instance ? instance : new SessionHandler();
-  }
+const verified = (token) => {
+  google
+    .verify(token)
+    .then(() => {
+      return true;
+    })
+    .catch(() => {
+      console.error;
+      return false;
+    });
+};
 
-  verifyUser(token) {
-    google
-      .verify(token)
-      .then(() => {
-        return true;
-      })
-      .catch(() => {
-        console.error;
-        return false;
-      });
-  }
+const authenticateUser = (user) => {
+  if (user !== undefined && user.id !== null) return true;
+  else return false;
+};
 
-  authenticateUser(req) {
-    const user = req.session.authID;
-    if (user !== undefined && user.id !== null) return true;
-    else return false;
-  }
-
-}
-
-module.exports = SessionHandler;
+module.exports = { verified, authenticateUser };

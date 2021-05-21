@@ -170,3 +170,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 32px 32px;
     background-color: #f1f1f1;
 }
+
+.login-link {
+    color: #81b941;
+    font-size: 24px;
+}

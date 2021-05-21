@@ -12,10 +12,16 @@ exports.search = async function(req, res) {
                     const id = response.data[i].id;
                     const title = response.data[i].title;
                     const image = response.data[i].image;
+                    const missingIngredients = []
+                    response.data[i].missedIngredients.forEach((element) => {
+                        missingIngredients.push(element.name);
+                    })
+                    console.log(missingIngredients);
                     const recipe = {
                         recipeId: id,
                         name: title,
                         image: image,
+                        missingIngredients: missingIngredients,
                         description: null
                     };
                     recipes.push(recipe);
@@ -38,10 +44,12 @@ exports.searchDetails = async function(req, res) {
     if(!!id) {
         try {
             let description = await spoonacular.summaryRequest(id);
-            console.log(description.data['summary'])
-            res.status(200).json({desc: description.data['summary']})
+            let info = await spoonacular.infoRequest(id);
+            res.status(200).json({desc: description.data['summary'], url: info.data['sourceUrl']})
         } catch (e){
             res.status(404).send({error: "Could not find recipe description: " + e});
         }
     }
 };
+
+

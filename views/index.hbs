@@ -4,8 +4,11 @@
         <title>{{title}}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="stylesheets/style.css">
+        <meta name="google-signin-client_id"
+            content="7142003137-m0qds4ukao168265tm0iae3fjpl1f4er.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <link rel="stylesheet" href="stylesheets/customStyle.css">
+        <link rel="icon" href="/images/favicon.ico">
     </head>
 <body>
 
@@ -14,10 +17,11 @@
         <a href="/" class="navbar-item" rel="Scrolls to the top"><img id="homeImage" class="logo" src="images/logo.svg" alt="Small logo of a red fridge"></a>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="hide-shrunk" style="float: right;">
-            <a href="/login" class="navbar-item" rel="Goes to the Login page">Login</a>
             <a href="#about" class="navbar-item" rel="Scrolls to the About section">About</a>
             <a href="#search" class="navbar-item" rel="Scrolls to the Search section">Search</a>
             <a href="#fridge" class="navbar-item" rel="Scrolls to the Fridge section">Fridge</a>
+            {{#if user}}<a href="#" onclick="signOut();" class="navbar-item">Sign out</a>
+            {{else}}<a href="/login" class="navbar-item">Login</a>{{/if}}
         </div>
 </nav>
 
@@ -26,6 +30,7 @@
     <img id="homeImage" src="images/ello-AEU9UZstCfs-unsplash.jpg" alt="An image of Inside a well stocked Fridge" width ="1500" height="750">
     <h1 class="header-text">What's In Your Fridge?</h1>
 </header>
+
 
 <!-- Page content -->
 <main class="main">
@@ -57,40 +62,69 @@
         </form>
 
         <img class="split-at-600 decor-image" src={{image}}>
+
     </section>
     <section class="recipe-results">
         <ul class="list multi-col-list" id="recipeList">
             {{#each recipeListResults}}
                 <li class="list-item">
                     <img class="result-image" src={{image}}>
-                    <h4> {{name}} </h4>
-                    <button class="result-title" id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" on> Show Details </button>
-                    <p class="result-desc" id="details-{{@index}}" > {{description}} </p>
+                    <h3> {{name}} </h3>
+                    <h5> Based on your search, you are missing the following ingredients: </h5>
+                    <ul>
+                        {{#each missingIngredients}}
+                        <li> {{this}}</li>
+                        {{/each}}
+                    </ul>
+                    <p id="details-{{@index}}"> {{description}} </p>
+                    <a target="_blank" style="display: none" id="url-{{@index}}" rel="Link to {{name}} recipe"
+                        href={{url}}> Go to this recipe </a>
                 </li>
             {{/each}}
         </ul>
     </section>
-
+    
+ <hr>    
     <!-- Fridge Contents Section -->
     <section class="section" id="fridge">
-        <dl class="split-at-600">
-            <h1 class="text-center">Tell Us What's in Your Fridge</h1><br>
-            <dt class="maintext">Bread Basket</dt>
-            <dd class="subtext">Assortment of fresh baked fruit breads and muffins 5.50</dd><br>
-
-            <dt class="maintext">Honey Almond Granola with Fruits</dt>
-            <dd class="subtext">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</dd><br>
-
-            <dt class="maintext">Belgian Waffle</dt>
-            <dd class="subtext">Vanilla flavored batter with malted flour 7.50</dd><br>
-
-            <dt class="maintext">Scrambled eggs</dt>
-            <dd class="subtext">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</dd><br>
-
-            <dt class="maintext">Blueberry Pancakes</dt>
-            <dd class="subtext">With syrup, butter and lots of berries 8.50</dd>
-        </dl>
-
+        <h1>Save your ingredients</h1><br>
+        <form class="split-at-600" action="/ingredients/save" method="POST">
+            {{#if user}}
+                <p>Date night coming up? save your ingredients, we know what she wants for dinner! </p>
+                <h4>Add your ingredients below</h4>
+                <p>
+                    {{!-- <input class="w3-input w3-padding-16" type="text" placeholder="Title" name="title" id="title">
+                    <input class="w3-input w3-padding-16" type="text" placeholder="Description" name="description" id="description">
+                    <input class="w3-input w3-padding-16" type="text" placeholder="Units" name="units" id="units"> --}}
+                    <input class="simple-input" type="text" placeholder="Title" name="title" id="title">
+                    <input class="simple-input" type="text" placeholder="Description" name="description" id="description">
+                    <input class="simple-input" type="text" placeholder="Units" name="units" id="units">
+                </p>
+                <p>
+                    {{!-- <button class="w3-button w3-light-grey w3-section" type="submit" id="saveBTtn">Add</button> --}}
+                    <button class="grey-btn" type="submit" id="saveBTtn">Add</button>
+                </p>
+                <p>
+                    <ul class="list" id="fridgeList">
+                        {{#each ingredientsList}}
+                            <li>
+                                <lable id="ingredient-{{@index}}"><b>Title:</b>{{title}}</lable>
+                                <lable id="ingredient-{{@index}}"><b>Desctipion:</b>{{description}}</lable>
+                                <lable id="ingredient-{{@index}}"><b>Units</b>{{units}}</lable>
+                                <button id="update-{{@index}}" value={{@index}} onClick="updateRecipe({{@index}})">Update</button>
+                                <button id="delete-{{@index}}" value={{@index}} onClick="deleteRecipe({{@index}})">Delete</button>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </p>
+            {{else}}
+                <p>
+                    In order to save your ingredients and impress your date, you'll have to log in! You know.. got to give some to get some.
+                    <br />
+                    <a href="/login" class="login-link">Login</a>
+                </p>
+            {{/if}}
+        </form>
         <img src="/images/pink-fridge.jpeg" class="split-at-600 decor-image" alt="Lady looking into fridge">
     </section>
 
@@ -106,5 +140,8 @@
 </footer>
 
 </body>
+<button type="button" class="g-signin2" style="display: none"></button>
+<script type="text/javascript" src="javascripts/google.js"></script>
 <script src="javascripts/recipeList.js"> </script>
 </html>
+
