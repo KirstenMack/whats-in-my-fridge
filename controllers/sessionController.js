@@ -1,7 +1,7 @@
 const google = require("../api/google");
 
 const verified = (token) => {
-  google
+  return google
     .verify(token)
     .then(() => {
       return true;
