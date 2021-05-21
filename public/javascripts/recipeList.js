@@ -3,6 +3,7 @@
 function fetchId (id) {
     const button = document.getElementById('detsButton-'+id);
     const value = button.value;
+    button.setAttribute("hidden", true)
     fetch('search/details/'+value, {method: 'GET'})
         .then(function(response){
             if (response.ok) {
