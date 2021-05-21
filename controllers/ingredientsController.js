@@ -50,8 +50,8 @@ exports.fetchAll = async (req, res) => {
   }
 };
 
-exports.update = async function (req, res) {};
+exports.update = function (req, res) {};
 
-exports.delete = async function (req, res) {};
+exports.delete = function (req, res) {};
 
-exports.use = async function (req, res) {};
+exports.use = function (req, res) {};
