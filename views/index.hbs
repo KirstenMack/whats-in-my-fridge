@@ -14,14 +14,14 @@
 
 <!-- Navbar (sit on top) -->
 <nav class="navbar" style="letter-spacing:4px;">
-        <a href="/" class="navbar-item" rel="Scrolls to the top"><img id="homeImage" class="logo" src="images/logo.svg" alt="Small logo of a red fridge"></a>
+        <a href="/" class="navbar-item" alt="Scrolls to the top"><img id="homeImage" class="logo" src="images/logo.svg" alt="Small logo of a red fridge"></a>
         <!-- Right-sided navbar links. Hide them on small screens -->
         <div class="hide-shrunk" style="float: right;">
-            <a href="#about" class="navbar-item" rel="Scrolls to the About section">About</a>
-            <a href="#search" class="navbar-item" rel="Scrolls to the Search section">Search</a>
-            <a href="#fridge" class="navbar-item" rel="Scrolls to the Fridge section">Fridge</a>
-            {{#if user}}<a href="#" onclick="signOut();" class="navbar-item">Sign out</a>
-            {{else}}<a href="/login" class="navbar-item">Login</a>{{/if}}
+            <a href="#about" class="navbar-item" alt="Scrolls to the About section">About</a>
+            <a href="#search" class="navbar-item" alt="Scrolls to the Search section">Search</a>
+            <a href="#fridge" class="navbar-item" alt="Scrolls to the Fridge section">Fridge</a>
+            {{#if user}}<a href="#" onclick="signOut();" class="navbar-item"  alt="Remains here but signs out">Sign out</a>
+            {{else}}<a href="/login" class="navbar-item" alt="Goes to the login page">Login</a>{{/if}}
         </div>
 </nav>
 
@@ -79,7 +79,7 @@
                     <button id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" class="button-full"  on> Show Details
                     </button>
                     <p id="details-{{@index}}"> {{description}} </p>
-                    <h5> <a target="_blank" style="display: none" id="url-{{@index}}" rel="Link to {{name}} recipe"
+                    <h5> <a target="_blank" style="display: none" id="url-{{@index}}" alt="Link to {{name}} recipe"
                         href={{url}}> Go to this recipe </a> </h5>
                 </li>
             {{/each}}
@@ -123,7 +123,7 @@
                 <p>
                     In order to save your ingredients and impress your date, you'll have to log in! You know.. got to give some to get some.
                     <br />
-                    <a href="/login" class="login-link">Login</a>
+                    <a href="/login" class="login-link" alt="Goes to the login page">Login</a>
                 </p>
             {{/if}}
         </form>
