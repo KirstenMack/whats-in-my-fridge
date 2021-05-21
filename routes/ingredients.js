@@ -1,8 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const ingredientController = require('../controllers/ingredientController');
+const ingredientsController = require('../controllers/ingredientsController');
 
-
-// router.get('/view', ingredientController.view);
+router.post('/save', ingredientsController.save);
+router.post('/update', ingredientsController.update);
+router.post('/delete', ingredientsController.delete);
+router.post('/use', ingredientsController.use);
+router.get('/fectchAll', ingredientsController.fetchAll);
 
 module.exports = router;

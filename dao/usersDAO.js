@@ -27,7 +27,6 @@ class UsersDAO {
 
   async insertUser(name, email) {
     try {
-      var split = name.split(" ");
       const response = await new Promise((resolve, reject) => {
         const query = `INSERT INTO users SET ? `;
         connection.query(query, 
