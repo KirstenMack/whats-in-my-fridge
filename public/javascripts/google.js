@@ -1,6 +1,6 @@
 function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    var id_token = googleUser.getAuthResponse().id_token;
+    const profile = googleUser.getBasicProfile();
+    const id_token = googleUser.getAuthResponse().id_token;
     fetch('/users/signin', {
         method: 'POST',
         headers: {
@@ -27,7 +27,7 @@ function onSignIn(googleUser) {
 }
 
 function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
+    const auth2 = gapi.auth2.getAuthInstance();
     fetch('/users/signout', {method: 'POST'}).then((response) => {
         if(response.status === 200) {
             auth2.signOut().then(() => {

@@ -27,7 +27,7 @@ exports.fetchAll = async (req, res) => {
     const ingredients = [];
     if (authenticated) {
       await dao.findIngredientsByUser(user).then((result) => {
-        for (var i = 0; i < result.length; i++) {
+        for (let i = 0; i < result.length; i++) {
           const id = result[i].id;
           const title = result[i].title;
           const description = result[i].description;
