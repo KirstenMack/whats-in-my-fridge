@@ -20,8 +20,8 @@
             <a href="#about" class="navbar-item" rel="Scrolls to the About section">About</a>
             <a href="#search" class="navbar-item" rel="Scrolls to the Search section">Search</a>
             <a href="#fridge" class="navbar-item" rel="Scrolls to the Fridge section">Fridge</a>
-            {{#if user}}<a href="#" onclick="signOut();" class="navbar-item">Sign out</a>
-            {{else}}<a href="/login" class="navbar-item">Login</a>{{/if}}
+            {{#if user}}<a href="#" onclick="signOut();" class="navbar-item"  rel="Remains here but signs out">Sign out</a>
+            {{else}}<a href="/login" class="navbar-item" rel="Goes to the login page">Login</a>{{/if}}
         </div>
 </nav>
 
@@ -121,7 +121,7 @@
                 <p>
                     In order to save your ingredients and impress your date, you'll have to log in! You know.. got to give some to get some.
                     <br />
-                    <a href="/login" class="login-link">Login</a>
+                    <a href="/login" class="login-link" rel="Goes to the login page">Login</a>
                 </p>
             {{/if}}
         </form>
