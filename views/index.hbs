@@ -76,9 +76,9 @@
                         <li> {{this}}</li>
                         {{/each}}
                     </ul>
-                    <p id="details-{{@index}}"> {{description}} </p>
-                    <a target="_blank" style="display: none" id="url-{{@index}}" rel="Link to {{name}} recipe"
-                        href={{url}}> Go to this recipe </a>
+                    <button id="detsButton-{{@index}}" value={{recipeId}} onClick="fetchId({{@index}})" on> Show Details </button>
+                    <p id="details-{{@index}}" > {{description}} </p>
+                    <a target="_blank" style="display: none" id="url-{{@index}}"  rel="Link to {{name}} recipe" href={{url}} > Go to this recipe </a>
                 </li>
             {{/each}}
         </ul>
