@@ -5,11 +5,10 @@ apiKey = process.env.API_KEY;
 const searchRequest = async (searchText) => {
     const encodedText = encodeURIComponent(searchText);
     try {
-        const numberResults = 5;
+        const numberResults = 6;
         let response =  await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${encodedText}&number=${numberResults}&apiKey=${apiKey}`)
         return response
     }
-
     catch(err){
         return  err;
     }

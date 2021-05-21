@@ -7,8 +7,8 @@ const verified = (token) => {
     .then(() => {
       return true;
     })
-    .catch(() => {
-      console.error;
+    .catch((err) => {
+      console.log(err);
       return false;
     });
 };
